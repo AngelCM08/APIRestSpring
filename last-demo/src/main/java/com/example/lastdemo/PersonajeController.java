@@ -29,8 +29,8 @@ public class PersonajeController {
         return new PersonajeDto(personaje);
     }
 
-    public Personaje addPersonaje(Personaje personaje) {
-        return personajeService.newPersonaje(personaje);
+    public PersonajeDto addPersonaje(Personaje personaje) {
+        return new PersonajeDto(personajeService.newPersonaje(personaje));
     }
 
     public void deletePersonaje(Integer id) {

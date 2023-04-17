@@ -31,7 +31,7 @@ public class PersonajeResource {
     }
 
     @PostMapping
-    public Personaje addPersonaje(@RequestBody Personaje personaje){
+    public PersonajeDto addPersonaje(@RequestBody Personaje personaje){
         return personajeController.addPersonaje(personaje);
     }
 

@@ -1,0 +1,11 @@
+POST:
+curl -i -X POST -H "Content-Type:application/json" -d "{\"nombre\":\"test\"}" http://localhost:8080/personajecurl -i -X POST -H "Content-Type:application/json" -d "{\"nombre\":\"test\"}" http://localhost:8080/personajes
+
+DELETE:
+curl -i -X DELETE http://localhost:8080/personajes/25
+
+PUT:
+curl -i -X PUT http://localhost:8080/personajes/2 -H "Content-Type:application/json" -d '{"id":80,"icono":"https://static.wikia.nocookie.net/bindingofisaac/images/3/30/Arte_de_personaje_Magdalena.png/revision/latest?cb=20210405155855&path-prefix=es","nombre":"Magdalena2","vida":4,"daño":"3.5 (x 1.00)","cadencia":"+0","vel_proyectil":"1","rango":"6.5","velocidad":"0.85","suerte":0}' http://localhost:8080/personajes/2
+
+PATCH:
+curl -i -X PATCH http://localhost:8080/personajes/1 -H "Content-Type: application/json-patch+json" -d '[{"op":"replace","path":"/nombre","value":"PollitoMaster"}]'
