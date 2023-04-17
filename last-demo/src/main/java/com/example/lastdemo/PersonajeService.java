@@ -2,7 +2,6 @@ package com.example.lastdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +33,9 @@ public class PersonajeService {
         Personaje personaje = new Personaje(personajeDto);
         repository.save(personaje);
         return personaje;
+    }
+
+    public void updatePersonaje(Personaje personajePatched) {
+        repository.save(personajePatched);
     }
 }

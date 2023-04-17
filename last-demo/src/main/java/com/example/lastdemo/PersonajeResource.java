@@ -1,12 +1,9 @@
 package com.example.lastdemo;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.fge.jsonpatch.JsonPatch;
-import com.github.fge.jsonpatch.JsonPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -49,16 +46,7 @@ public class PersonajeResource {
     }
 
     @PatchMapping(path = "/{id}", consumes = "application/json-patch+json")
-    public ResponseEntity<Personaje> updatePersonaje(@PathVariable String id, @RequestBody JsonPatch patch) {
-        try {
-            Personaje personaje = personajeService.findPersonaje(id).orElseThrow(PersonajeNotFoundException::new);
-            Personaje personajePatched = applyPatchToPersonaje(patch, personaje);
-            personajeService.updatePersonaje(personajePatched);
-            return ResponseEntity.ok(personajePatched);
-        } catch (JsonPatchException | JsonProcessingException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        } catch (PersonajeNotFoundException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+    public ResponseEntity<Personaje> updatePersonaje(@PathVariable Integer id, @RequestBody JsonPatch patch) {
+        return personajeController.updatePersonaje(id, patch);
     }
 }
